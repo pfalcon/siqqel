@@ -121,7 +121,7 @@ siqqel = {
 					}
 
 					if(graphValues[i] != graphMax) {
-						$(this).addClass('quickGraph').css('-moz-background-size', Math.round(graphValues[i] / graphMax * 100) + '% 100%');
+						$(this).addClass('quickGraph').css('background-size', Math.round(graphValues[i] / graphMax * 100) + '% 100%');
 					} else {
 						$(this).addClass('quickGraphMax');
 					}
