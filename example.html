@@ -4,6 +4,7 @@
 		<title>siqqel Example File</title>
 
 		<!-- Change the src attribute to reflect the url of your siqqel installation -->
+		<script type="text/javascript" src="/siqqel/js/jquery-1.4.2-min.js"></script>
 		<script type="text/javascript" src="/siqqel/siqqel.js"></script>
 
 	</head>
@@ -64,11 +65,13 @@
 		</table>
 
 		<script type="text/javascript">
+		$(function() {
 			$('td.Word').live('loaded', function() {
 				if ($(this).text().substr(0,1).toLowerCase() == 'h') {
 					$(this).css('background-color', 'yellowgreen');
 				}
 			});
+		});
 		</script>
 
 		</div>

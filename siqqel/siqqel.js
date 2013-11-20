@@ -2,7 +2,7 @@
         dependencies: {
             "css": ["css/style.css"],
             "js": [
-                "js/jquery-1.4.2-min.js", "js/json.js", "js/dbslayer.js" ,"js/hashParams.js",
+                "js/json.js", "js/dbslayer.js" ,"js/hashParams.js",
                 "js/variableInputPanel.js", "js/siqqelLib.js"
             ]
         },
