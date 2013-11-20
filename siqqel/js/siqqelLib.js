@@ -155,6 +155,7 @@ function initTables() {
 		var $this = $(this);
 		
 		var sqlQuery = $this.attr('sql');
+		var isDelayed = $this.attr('data-delay');
 
 		$.each(siqqel.getRequiredHashParams(sqlQuery), function() {
 			requiredHashParams[this] = true;
@@ -162,8 +163,18 @@ function initTables() {
 
 		var serverId = $this.attr('server');
 
-		$this.html('<tr><td>loading</td></tr>');
-		siqqel.executeQuery($this, sqlQuery, hashParams, serverId);
+		if (isDelayed == "yes") {
+		    $this.html('<tr><td></td></tr>');
+
+                    var loadLink = $('<a>').text('Click to show').click(function() {
+                            siqqel.executeQuery($this, sqlQuery, hashParams, serverId);
+                    });
+
+                    $this.find('tr:first-child td:first-child').append(loadLink);
+		} else {
+		    $this.html('<tr><td>loading</td></tr>');
+		    siqqel.executeQuery($this, sqlQuery, hashParams, serverId);
+		}
 	});
 
 	return requiredHashParams;
