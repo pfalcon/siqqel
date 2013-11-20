@@ -14,11 +14,11 @@
 		<!-- Very basic query -->
 		<!--                  -->
 		Resultset of query <em>SELECT 'Hello World' AS value</em>:
-		<table sql="SELECT 'Hello World' AS value"></table>
+		<table data-sql="SELECT 'Hello World' AS value"></table>
 		<p style="margin-bottom: 32px"></p>
 
 		Resultset of query <em>SELECT 'Hello World' AS value</em>, on demand:
-		<table sql="SELECT 'Hello World' AS value" data-delay="yes"></table>
+		<table data-sql="SELECT 'Hello World' AS value" data-delay="yes"></table>
 		<p style="margin-bottom: 32px"></p>
 
 
@@ -27,7 +27,7 @@
 		Resultset of query <em>SELECT #myParam AS myParamValue</em>,<br />
 		where <em>#myParam</em> is replaced with your input:
 
-		<table sql="SELECT '#myParam' AS myParamValue"></table>
+		<table data-sql="SELECT '#myParam' AS myParamValue"></table>
 		(rightly shows an error if no parameter is provided)
 
 
@@ -39,7 +39,7 @@
 		Resultset showing the population of some european cities<br />
 		with a bar graph representing the size of field <em>Population</em>:
 
-		<table sql="SELECT 'Amsterdam' AS City, '2497000' AS Population UNION
+		<table data-sql="SELECT 'Amsterdam' AS City, '2497000' AS Population UNION
 					SELECT 'Athens' AS City, '3761000' AS Population UNION
 					SELECT 'Barcelona' AS City, '4082000' AS Population UNION
 					SELECT 'Berlin' AS City, '4016000' AS Population UNION
@@ -58,7 +58,7 @@
 		Resultset where rows starting with the letter 'h'<br />
 		are highlighted using jQuery:
 
-		<table sql="SELECT 'Hello' AS Word UNION
+		<table data-sql="SELECT 'Hello' AS Word UNION
 					SELECT 'World' AS Word UNION
 					SELECT 'how' AS Word UNION
 					SELECT 'are' AS Word UNION

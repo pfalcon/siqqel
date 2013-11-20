@@ -151,10 +151,10 @@ siqqel = {
 function initTables() {
 	var requiredHashParams = {};
 
-	$('table[sql]').each(function() {
+	$('table[data-sql]').each(function() {
 		var $this = $(this);
 		
-		var sqlQuery = $this.attr('sql');
+		var sqlQuery = $this.attr('data-sql');
 		var isDelayed = $this.attr('data-delay');
 
 		$.each(siqqel.getRequiredHashParams(sqlQuery), function() {
