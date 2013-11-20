@@ -26,7 +26,7 @@ siqqel = {
 			if(finalCallback) finalCallback();
 
 		}, function(error, errorNum, server) {
-			siqqel.displayError($this, 'MySQL Error: ' + error + ' (' + errorNum + ')');
+			siqqel.displayError($this, 'SQL Error: ' + error + ' (' + errorNum + ')');
 		});
 	},
 
@@ -139,7 +139,7 @@ siqqel = {
 			$this.find('tr:first-child th:first-child').append(reloadLink);
 
 		}, function(error, errorNum, server) {
-			siqqel.displayError($this, 'MySQL Error: ' + error + ' (' + errorNum + ')');
+			siqqel.displayError($this, 'SQL Error: ' + error + ' (' + errorNum + ')');
 		});
 	},
 
