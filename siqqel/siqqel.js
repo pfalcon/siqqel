@@ -1,5 +1,13 @@
 ({
-	config: '!!configHere!!',
+        dependencies: {
+            "css": ["css/style.css"],
+            "js": [
+                "js/jquery-1.4.2-min.js", "js/json.js", "js/dbslayer.js" ,"js/hashParams.js",
+                "js/variableInputPanel.js", "js/siqqelLib.js"
+            ]
+        },
+
+        config: {"baseUrl": "/siqqel/"},
 
 	loadFileContents: function(url, callback) {
 		var xmlHttpReq = false;
@@ -53,10 +61,10 @@
 			this.loadJs(this.config.baseUrl + this.config.javaScriptFiles[i]);
 		}*/
 
-		this.loadJsAsync(this.config.javaScriptFiles);
+		this.loadJsAsync(this.dependencies.js);
 
-		for (var i = 0; i < this.config.cssFiles.length; i++) {
-			this.loadCss(this.config.baseUrl + this.config.cssFiles[i]);
+		for (var i = 0; i < this.dependencies.css.length; i++) {
+			this.loadCss(this.config.baseUrl + this.dependencies.css[i]);
 		}
 
 	}
