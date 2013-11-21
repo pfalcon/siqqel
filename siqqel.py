@@ -27,7 +27,8 @@ def index():
     log.debug("SQL after substs: %s", sql)
     res = {}
     try:
-        cursor = db.execute(sql)
+        cursor = db.cursor()
+        cursor.execute(sql)
     except sqlite3.OperationalError, e:
         log.exception("SQL error")
         res["MYSQL_ERROR"] = str(e)
