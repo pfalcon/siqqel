@@ -29,7 +29,7 @@ def index():
     try:
         cursor = db.cursor()
         cursor.execute(sql)
-    except sqlite3.OperationalError, e:
+    except Exception, e:
         log.exception("SQL error")
         res["MYSQL_ERROR"] = str(e)
         res["MYSQL_ERRNO"] = 1
