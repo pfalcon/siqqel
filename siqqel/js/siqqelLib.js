@@ -26,7 +26,7 @@ siqqel = {
 			if(finalCallback) finalCallback();
 
 		}, function(error, errorNum, server) {
-			siqqel.displayError($this, 'SQL Error: ' + error + ' (' + errorNum + ')');
+			siqqel.displayError($this, 'SQL Error: ' + error + ' (' + errorNum + ')', sqlQuery);
 		});
 	},
 
@@ -139,12 +139,17 @@ siqqel = {
 			$this.find('tr:first-child th:first-child').append(reloadLink);
 
 		}, function(error, errorNum, server) {
-			siqqel.displayError($this, 'SQL Error: ' + error + ' (' + errorNum + ')');
+			siqqel.displayError($this, 'SQL Error: ' + error + ' (' + errorNum + ')', sqlQuery);
 		});
 	},
 
-	displayError: function($this, errorText) {
-		$this.empty().addClass('error').append($('<tr>').append($('<td>').text(errorText)));
+	displayError: function($this, errorText, sql) {
+		function quote(txt) {
+			// http://stackoverflow.com/questions/24816/escaping-html-strings-with-jquery
+			// Isn't this stupid? Well, it's everything like that with JavaScript
+			return $('<div/>').text(txt).html()
+		}
+		$this.empty().addClass('error').append($('<tr>').append($('<td>').html(quote(sql) + "<br />" + quote(errorText))));
 	}
 }
 
