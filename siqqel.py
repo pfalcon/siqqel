@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import json
 import logging
+import datetime
 
 from bottle import request, route, run, template
 from bottle import static_file
@@ -20,6 +21,15 @@ def db_connect_pgsql():
 
 #db_connect = db_connect_pgsql
 db_connect = db_connect_sqlite3
+
+
+class DatetimeEncoder(json.JSONEncoder):
+     def default(self, obj):
+         if isinstance(obj, datetime.datetime):
+             return str(obj)
+         if isinstance(obj, datetime.timedelta):
+             return str(obj)
+         return json.JSONEncoder.default(self, obj)
 
 
 @route('/siqqel/passthru.php')
@@ -50,7 +60,7 @@ def index():
     res["HEADER"] = [x[0] for x in cursor.description]
     res["TYPES"] = ["MYSQLI_TYPE_VAR_STRING"] * len(res["HEADER"])
     res["ROWS"] = cursor.fetchall()
-    out = request.query.callback + "(" + json.dumps({"RESULT": res}) + ")"
+    out = request.query.callback + "(" + json.dumps({"RESULT": res}, cls=DatetimeEncoder) + ")"
     log.debug("result: %s", out)
     return out
 
