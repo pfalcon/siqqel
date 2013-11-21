@@ -22,8 +22,17 @@ def index():
             sql = sql.replace("#" + var, val)
 
     log.debug("SQL after substs: %s", sql)
-    cursor = db.execute(sql)
     res = {}
+    try:
+        cursor = db.execute(sql)
+    except sqlite3.OperationalError, e:
+        log.exception("SQL error")
+        res["MYSQL_ERROR"] = str(e)
+        res["MYSQL_ERRNO"] = 1
+        out = request.query.callback + "(" + json.dumps(res) + ")"
+        log.debug(out)
+        return out
+
     res["HEADER"] = [x[0] for x in cursor.description]
     res["TYPES"] = ["MYSQLI_TYPE_VAR_STRING"] * len(res["HEADER"])
     res["ROWS"] = cursor.fetchall()
