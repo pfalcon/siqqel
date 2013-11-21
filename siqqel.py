@@ -1,22 +1,32 @@
 #!/usr/bin/env python
 import json
-import sqlite3
 import logging
 
 from bottle import request, route, run, template
 from bottle import static_file
 
 
-# Database to open/connect to
-DB = "sample.db"
-
 log = logging.getLogger("siqqel")
+
+
+def db_connect_sqlite3():
+    import sqlite3
+    db = sqlite3.connect("sample.db")
+    return db
+
+def db_connect_pgsql():
+    import psycopg2
+    return psycopg2.connect("dbname=db user=username")
+
+#db_connect = db_connect_pgsql
+db_connect = db_connect_sqlite3
+
 
 @route('/siqqel/passthru.php')
 def index():
     query = json.loads(request.query.sql)
     log.debug("input query: %s", query)
-    db = sqlite3.connect(DB)
+    db = db_connect()
     sql = query["SQL"]
 
     # Substitute hash params
