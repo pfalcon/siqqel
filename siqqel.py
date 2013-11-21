@@ -64,6 +64,10 @@ def server_static(filename):
 def server_static():
     return static_file("example.html", root=".")
 
+@route("/page/<filename:path>")
+def server_static(filename):
+    return static_file(filename, root="html")
+
 
 logging.basicConfig(level=logging.DEBUG)
 run(host='localhost', port=8080)
