@@ -7,13 +7,16 @@ from bottle import request, route, run, template
 from bottle import static_file
 
 
+# Database to open/connect to
+DB = "sample.db"
+
 log = logging.getLogger("siqqel")
 
 @route('/siqqel/passthru.php')
 def index():
     query = json.loads(request.query.sql)
     log.debug("input query: %s", query)
-    db = sqlite3.connect("sample.db")
+    db = sqlite3.connect(DB)
     sql = query["SQL"]
 
     # Substitute hash params
