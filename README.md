@@ -1,3 +1,17 @@
+# What is siqqel-ng?
+
+siqqel-ng is a rewrite of original siqqel in Python. No nailing with MySQL, Apache, PHP,
+no global installs, no root access, no nothing. Use your favorite database, write couple
+of trivial functions with your favorite microframework, or just use self-contained
+implementation using Bottle and SQL right away. To start:
+
+    $ python2 siqqel.py
+
+Open http://localhost:8080/ in a browser.
+
+Below goes the original README, take mentions of MySQL and PHP with a grain of salt ;-).
+
+
 # What is siqqel?
 
 siqqel is a simple and lightweight framework which allows you to execute MySQL queries directly from
